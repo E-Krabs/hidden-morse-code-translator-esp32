@@ -5,6 +5,8 @@ import dicttoxml
 import json
 import gtts
 from playsound import playsound
+from googletrans import Translator, constants
+from pprint import pprint
 
 try:
 	while True:
@@ -68,38 +70,33 @@ try:
 			exit()
 
 		try:
-			page = urllib.request.urlopen('https://api.dictionaryapi.dev/api/v2/entries/en_US/{}'.format(dec_msg_str))
+			page = urllib.request.urlopen('https://www.spanishdict.com/translate/{}'.format(dec_msg_str))
 		
 		except:
 			print('Word Does Not Exist!')
 			playsound('400.mp3')
 			exit()
 
-		content = page.read()
-		obj = json.loads(content)
-		#print(obj)
-		xml = dicttoxml.dicttoxml(obj)
-		#print(xml)
+		content = 'https://www.spanishdict.com/thesaurus/{}'.format(dec_msg_str)
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		req = Request(content, headers=hdr)
+		read_content = urlopen(req)
+		soup = BeautifulSoup(read_content, 'html.parser')
+		translation = soup.find('div', {'class' : '_3NkyA05U'}).get_text(strip=True).split('-')
+		definition = translation[0]
+		word = translation[1]
 
-		i = 0
-		soup = BeautifulSoup(xml, 'xml')
-		pos = soup.find_all('partOfSpeech', limit=4)
-		pos_str = pos[i].get_text(strip=True)
-		definition =  soup.find_all('definition', limit=4)
-		def_str = definition[i].get_text(strip=True)
-
-		#print(pos_str)
-		#print(def_str)
-		print(dec_msg_str + ' - ' + pos_str + ': ' + def_str)
-
-		tts = gtts.gTTS(dec_msg_str + ' - ' + pos_str + ': ' + def_str, lang='en')
+		#print(dec_msg_str + ' = ' + word)
+		#print(word + ' - ' + definition)
+		print('{} is {}: {}'.format(dec_msg_str, word, definition))
+		tts = gtts.gTTS('{} is {}: {}'.format(dec_msg_str, word, definition), lang='en')
 		try:
 			tts.save('{}.mp3'.format(dec_msg_str))
 
 		except:
 			print('File Already Exists!')
 		playsound('{}.mp3'.format(dec_msg_str))
-		
+
 except:
 	print('Keyboard Interrupt')
 	playsound('interrupt.mp3')
