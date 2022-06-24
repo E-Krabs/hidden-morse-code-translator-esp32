@@ -1,4 +1,4 @@
-# morse-code-definitions
+# morse_code_exam_cheater
 Takes encoded words and scrapes their definition and part of speech. Converts to text-to-speech.
 
 Translates morse inputs from GPIO, decodes them, and searches either <a href="https://api.dictionaryapi.dev">Dictionaryapi.dev</a>, or <a href="https://spanishdict.com">Spanishdict</a>.
