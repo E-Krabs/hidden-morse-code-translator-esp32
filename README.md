@@ -21,4 +21,4 @@ RHeel: Enter
 
 Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
 
-Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!
+<b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b>
