@@ -1,5 +1,5 @@
 # morse_code_exam_cheater
-Takes encoded words and scrapes their definition and part of speech. Converts to text-to-speech.
+Takes encoded words from RPi and scrapes their result, converts to tts or back to morse with a vibration motor that you can hide... anywhere.
 
 Translates morse inputs from GPIO, decodes them, and searches either <a href="https://api.dictionaryapi.dev">Dictionaryapi.dev</a>, or <a href="https://spanishdict.com">Spanishdict</a>.
 Also plays line by line in a text file with tts. Tts has been replaced with vibration motor.
