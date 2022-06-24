@@ -11,3 +11,10 @@ Also plays line by line in a text file with tts. Tts has been replaced with vibr
   <li>Result --> Morse</li>
   <li>Morse --> Vibration Motor</li>
 </ul>
+
+How I use??
+Connect the RPi to internet. Tape the vobration motor to your theigh through a small hole in your pocket. Place buttons under BOTH big toes, and BOTH heels. <br>
+LToe: 0 (dot)<br>
+RToe: 1 (dash)<br>
+LHeel: Space<br>
+RHeel: Enter
