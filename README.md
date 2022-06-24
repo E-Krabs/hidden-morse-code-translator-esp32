@@ -20,5 +20,5 @@ LHeel: Space<br>
 RHeel: Enter
 
 Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
-
-<b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b>
+<b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br>
+If you want to build one, comment through musescore and ill send an extra PCB (or gerber) with an STL for the case. JLC PCB prints alot and I only have one Pi...
