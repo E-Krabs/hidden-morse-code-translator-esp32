@@ -1,12 +1,11 @@
-gTTS==2.2.3
-dicttoxml==1.7.4
-playsound==1.2.2
-requests==2.25.1
-Adafruit_GPIO==1.0.3
-Adafruit_SSD1306==1.6.2
-beautifulsoup4==4.9.3
-board==1.0
-mutagen==1.45.1
-oled_text==1.2.3
-Pillow==8.3.1
-pygame==2.0.1
+import requests
+import urllib.request
+from urllib.request import Request, urlopen
+import random
+import json
+import gtts
+from pygame import mixer
+import time
+from python_translator import Translator
+from mutagen.mp3 import MP3
+import RPi.GPIO as GPIO
