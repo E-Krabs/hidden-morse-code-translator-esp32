@@ -1,6 +1,6 @@
 # morse_code_exam_cheater
-Decodes morse code imput from RPi 0 w+ GPIO, sends to an API, and plays back inear tts or vibration motor that you can hide... anywhere.
-
+Decodes morse code imput from RPi 0 w+ GPIO, sends to an API, and plays back inear tts or vibration motor that you can hide... anywhere.<br>
+MODEL 69420
 <img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/~3D_dark_front.png"></img>
 <img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/~3D_dark_back.png"></img>
 
