@@ -20,7 +20,7 @@ Connect the RPi to internet. Tape the vobration motor to your theigh through a s
 LToe: 0 (dot)<br>
 RToe: 1 (dash)<br>
 LHeel: Space<br>
-RHeel: Enter
+Wait 5 seconds of no input will enter morse.
 
 GERBER!!!! --> 69420.zip!!!!
 
