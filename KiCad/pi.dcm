@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AudioJack3_Dual_Ground_Switch
+D Audio Jack, Dual, 3 Poles (Stereo / TRS), Grounded Sleeve, Switched Poles (Normalling)
+K audio jack dual receptacle stereo headphones phones TRS connector
+F ~
+$ENDCMP
+#
+$CMP AudioJack4_Ground
+D Audio Jack, 4 Poles (TRRS), Grounded Sleeve
+K audio jack receptacle stereo headphones TRRS connector
+F ~
+$ENDCMP
+#
+#End Doc Library
