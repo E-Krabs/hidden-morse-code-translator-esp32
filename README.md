@@ -10,7 +10,7 @@ Also plays line by line in a text file with tts. Tts has been replaced with vibr
 <ul>
   <li>Button --> Morse</li>
   <li>Morse --> Word</li>
-  <li>Word --> Dictonary</li>
+  <li>Word --> Dictonary/MATH/Translator</li>
   <li>Result --> Morse</li>
   <li>Morse --> Vibration Motor</li>
 </ul>
