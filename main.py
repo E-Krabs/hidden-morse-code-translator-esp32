@@ -4,30 +4,46 @@ from urllib.request import Request, urlopen
 import random
 import json
 import gtts
-from pygame import mixer
+#from pygame import mixer
 import time
 from python_translator import Translator
 #from mutagen.mp3 import MP3
-#import RPi.GPIO as GPIO
-import winsound
+import RPi.GPIO as GPIO
+#import winsound
 
-mixer.init() # pygame audio
-
-one = 26
-zero = 19
-space = 6
-enter = 5
-vb = 15
-
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setup(one, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-#GPIO.setup(zero, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-#GPIO.setup(space, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-#GPIO.setup(enter, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-#GPIO.setup(vb, GPIO.OUT)
-
+#mixer.init() # pygame audio
 translator = Translator()
 
+#RF
+one = 26
+zero = 24
+space = 22
+enter = 18
+#DIP
+dip1 = 19
+dip2 = 21
+dip3 = 23
+dip4 = 29
+#VIBRATOR
+vib = 35
+duty_cycle = 50
+
+GPIO.setmode(GPIO.BCM)
+#RF
+GPIO.setup(one, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(zero, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(space, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(enter, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#DIP
+GPIO.setup(dip1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(dip2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(dip3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(dip4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#VIBRATOR
+GPIO.setup(vib, GPIO.OUT)
+pwm = GPIO.PWM(vib, 100)
+
+print('Ready')
 def input_gpio():
 		# create dictionary
 		character = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']
@@ -36,38 +52,49 @@ def input_gpio():
 		phrase_str = ''
 
 		while True:
-			usr_input = input('Enter Code:' )
-			phrase_lst.append(usr_input)
-			break
+			#usr_input = input('Enter Code:' )
+			#phrase_lst.append(usr_input)
+			#break
 
-			#one_high = GPIO.input(one)
-			#if one_high == True:
-				#print('1')
-				#phrase_lst.append('1')
-				#time.sleep(.4)
+			one_high = GPIO.input(one)
+			if one_high == True:
+				print('1')
+				phrase_lst.append('1')
+				pwm.start(duty_cycle)
+				time.sleep(1)
+				pwm.stop()
+				interrupt = time.time()
 
-			#zero_high = GPIO.input(zero)
-			#if zero_high == True:
-				#print('0')
-				#phrase_lst.append('0')
-				#time.sleep(.4)
+			zero_high = GPIO.input(zero)
+			if zero_high == True:
+				print('0')
+				phrase_lst.append('0')
+				pwm.start(duty_cycle)
+				time.sleep(.3)
+				pwm.stop()
+				interrupt = time.time()
 
-			#space_high = GPIO.input(space)
-			#if space_high == True:
-				#print('*')
-				#phrase_lst.append('*')
-				#time.sleep(.4)
+			space_high = GPIO.input(space)
+			if space_high == True:
+				print('*')
+				phrase_lst.append('*')
+				pwm.start(duty_cycle)
+				time.sleep(2)
+				pwm.stop()
+				interrupt = time.time()
 
-			#enter_high = GPIO.input(enter)
-			#if enter_high == True:
-				#print('Enter')
-				#break
+			if time.time()-interrupt >= 10:
+				print('Enter')
+				pwm.start(duty_cycle)
+				time.sleep(3)
+				pwm.stop()
+				break
 
 		phrase = ''.join(phrase_lst)
 		#print(phrase)
 
 		# reverse the previous dict as it's easier to access the keys
-		zipped_code_char = zip(code,character)
+		zipped_code_char = zip(code, character)
 		rev_morse_dict = dict(list(zipped_code_char))
 		# initiating a while loop
 		while True:
@@ -95,21 +122,57 @@ def input_gpio():
 			print ("Decoded Message is: " + ''.join(dec_msg))
 			break
 		return(dec_msg_str)
-		
-def math_solver():
-	frac_open = '{'
-	frac_close = '}'
-	dec_msg_str = 'x+6=9+{4/7}+{(19+1)/(17-5)}'
-	
-	
-	math_url = dec_msg_str[dec_msg_str.find(frac_open)+1 : dec_msg_str.find(frac_close)]
 
-
+def math_solver(dec_msg_str):
+	dec_msg_lst = dec_msg_str.split('*')
+	math_enc = ['pwr', 'sq', 'po', 'pc', 'pls', 'min', 'div', 'is']
+	math_dec = ['~', 'sqrt', '(', ')', '+', '-', '/', '=']
+	zipped_math = zip(math_enc, math_dec)
+	rev_math_dict = dict(list(zipped_math))
+	math_url_lst = []
+	for j in range(0, len(dec_msg_lst)):
+		if dec_msg_lst[j] in rev_math_dict.keys():
+			math_url_lst.append(rev_math_dict[dec_msg_lst[j]])
+		else:
+			math_url_lst.append(dec_msg_lst[j])
+	math_url = ''.join(math_url_lst)
+	#print(math_url)
 	
-	print('https://mathsolver.microsoft.com/en/solve-problem/{}'.format(dec_msg_str))
-	page = requests.get('https://api.dictionaryapi.dev/api/v2/entries/en_US/{}'.format(dec_msg_str))
-	content = page.text
-	print(content)
+	print('https://www.tiger-algebra.com/nojsdrill/{}'.format(math_url))
+
+	try:
+		page = requests.get('https://www.tiger-algebra.com/nojsdrill/{}'.format(math_url))
+		content = page.text
+		soup = BeautifulSoup(content, 'html.parser')
+		select = soup.select('div.result:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > span:nth-child(1)')
+	except:
+		error()
+		return None
+
+	for result in select:
+		print(result.get_text())
+		math_encoder(result.get_text())
+
+def math_encoder(*result):
+	math_enc = ['`0110`011`010`', '`000`1101`', '`0110`111`', '`0110`1010`', '`0110`0100`000`', '`11`00`10`', '`100`00`0001`', '`00`000`','11111','01111','00111','00011','00001','00000','10000','11000','11100','11110','1001','1011','1100','0010','110']
+	math_dec = ['^', '√', '(', ')', '+', '-', '/', '=', '0','1','2','3','4','5','6','7','8','9','x','y','z','f','g']
+	zipped_math = zip(math_dec, math_enc)
+	rev_math_dict = dict(list(zipped_math))
+	math_enc_lst = []
+	math_enc = []
+	print('hi')
+	for solution in result:
+		for char in list(solution):
+			math_enc_lst.append(char)
+			math_enc_lst.append('`')
+
+		for j in range(0, len(math_enc_lst)):
+			if math_enc_lst[j] in rev_math_dict.keys():
+				math_enc.append(rev_math_dict[math_enc_lst[j]])
+			else:
+				math_enc.append(math_enc_lst[j])
+		math_enc_str = ''.join(math_enc)
+		vib_motor(math_enc_str)
 
 def dictionary(dec_msg_str):
 	try:
@@ -117,11 +180,8 @@ def dictionary(dec_msg_str):
 		page = requests.get('https://api.dictionaryapi.dev/api/v2/entries/en_US/{}'.format(dec_msg_str))
 	except:
 		print('404')
-		#mixer.music.load('404.mp3') # 404 not found
-		#mixer.music.play()
-		#time.sleep(3)
-		#GPIO.cleanup()
-		exit()
+		error()
+		return None
 
 	content = page.text
 
@@ -130,10 +190,8 @@ def dictionary(dec_msg_str):
 		#print(results)
 	except:
 		print('400')
-		#mixer.music.load('400.mp3') # 400 bad request
-		#mixer.music.play()
-		#time.sleep(3)
-		return False
+		error()
+		return None
 
 	r_pos = []
 	r_def = []
@@ -147,7 +205,7 @@ def dictionary(dec_msg_str):
 	#r_str = '{}, {}: {}'.format(r_word[0], r_pos[0], r_def[0])
 	r_str = r_def[0]
 	print(r_str)
-	vb_motor_lst((ph_to_morse(r_str)))
+	morse_encoder(r_str)
 	#tts = gtts.gTTS(r_str, lang='en')
 	#audio_play(tts_save(dec_msg_str, tts))
 
@@ -159,7 +217,7 @@ def spanish(dec_msg_str):
 	r_str = '{}: {}'.format(dec_msg_str, result)
 	print(r_str)
 	r_str = str(result)
-	vb_motor_lst((ph_to_morse(r_str)))
+	morse_encoder(r_str)
 	#tts = gtts.gTTS(r_str, lang='en')
 	#audio_play(tts_save(dec_msg_str, tts))
 
@@ -168,49 +226,43 @@ def text_doc():
 	with open('doc.txt', 'r', encoding='utf-8') as o:
 		lines = o.readlines()
 		while True:
-			#one_high = GPIO.input(one)
-			#if one_high == True:
-			inl = input('Line: ')
+			one_high = GPIO.input(one)
+			if one_high == True:
 			if inl == '1':
 				print('1')
 				if count < len(lines):
 					count += 1
-				#print(lines[count].strip())
-				vb_motor_lst((ph_to_morse(lines[count].strip())))
-				#tts = gtts.gTTS(lines[count].strip(), lang='en')
-				#audio_play(tts_save(lines[count].strip(), tts))
-			#zero_high = GPIO.input(zero)
-			#if zero_high == True:
-			if inl == '0':
-				print('0')
-				if count > 0:
-					count -= 1
-				#print(lines[count].strip())
-				vb_motor_lst((ph_to_morse(lines[count].strip())))
+				print(lines[count].strip())
+				morse_encoder(lines[count].strip())
 				#tts = gtts.gTTS(lines[count].strip(), lang='en')
 				#audio_play(tts_save(lines[count].strip(), tts))
 
-'''
+			zero_high = GPIO.input(zero)
+			if zero_high == True:
+				print('0')
+				if count > 0:
+					count -= 1
+				print(lines[count].strip())
+				morse_encoder(lines[count].strip())
+				#tts = gtts.gTTS(lines[count].strip(), lang='en')
+				#audio_play(tts_save(lines[count].strip(), tts))
+
 def tts_save(dec_msg_str, tts):
-	rand_id = '{}{}.mp3'.format(dec_msg_str, random.randrange(100000, 1999999))
+	rand_id = '{}{}.mp3'.format(dec_msg_str, random.randrange(10000, 199999))
 	tts.save(rand_id)
 	return(rand_id)
 
 def audio_play(rand_id):
-	mixer.music.load('{}.mp3'.format(rand_id))
-	mixer.music.play()
-	audio = MP3('{}.mp3'.format(rand_id))
-	read_wait = audio.info.length
-	print(read_wait)
-	time.sleep(read_wait)
-'''
+	mixer.music.load(rand_id)
+	with mixer.music.play():
+		time.sleep(100)
 
-def ph_to_morse(phrase):
+def morse_encoder(phrase):
 	phrase = phrase.upper()
 	#print(phrase)
 	# create dictionary
-	character = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9',' ', '+','á','é','í','ó','ú','ü','ñ']
-	code = ['01','1000','1010','100','0','0010','110','0000','00','0111','101','0100','11','10','111','0110','1101','010','000','1','001','0001','011','1001','1011','1100','11111','01111','00111','00011','00001','00000','10000','11000','11100','11110','*','+','01','0','00','111','001','001','10']
+	character = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9',' ', '-','á','é','í','ó','ú','ü','ñ']
+	code = ['01','1000','1010','100','0','0010','110','0000','00','0111','101','0100','11','10','111','0110','1101','010','000','1','001','0001','011','1001','1011','1100','11111','01111','00111','00011','00001','00000','10000','11000','11100','11110','*','-','01','0','00','111','001','001','10']
 
 	# reverse the previous dict as it's easier to access the keys
 	zipped_code_char = zip(character, code)
@@ -219,21 +271,12 @@ def ph_to_morse(phrase):
 	while True:
 		# empty list to store decoded message
 		enc_msg = []
-		enc_dic = {}
 
-		new_msg = []#list(phrase)
+		new_msg = []
+		for char in list(phrase):
+			new_msg.append(char)
+			new_msg.append('`')
 
-		for char in phrase:
-			if char != ' ' and char != "'":
-				new_msg.append(char)
-				#if char != phrase[-1]:
-				new_msg.append('+')
-			elif char == ' ':
-				new_msg.append(' ')
-
-		#print(new_msg)
-		#print(''.join(new_msg))
-		# printing out the original message
 		print("Original message: " + phrase)
 
 		for j in range(0, len(new_msg)):
@@ -247,57 +290,57 @@ def ph_to_morse(phrase):
 		enc_msg = ''.join(enc_msg)
 		print("Decoded Message is: " + enc_msg)
 		break
-	return(enc_msg)
+	vib_motor(enc_msg)
 
-def vb_motor_lst(enc_msg):
+def vib_motor(enc_msg):
 	for char in enc_msg:
 		if char == '1':
 			print('1')
-			winsound.Beep(2500, 1000)
-			#GPIO.output(vb, GPIO.HIGH)
-			#time.sleep(1)
-			#GPIO.output(vb, GPIO.LOW)
+			pwm.start(duty_cycle)
+			time.sleep(1)
+			pwm.stop()
 		elif char == '0':
 			print('0')
-			winsound.Beep(2500, 500)
-			#GPIO.output(vb, GPIO.HIGH)
-			#time.sleep(.5)
-			#GPIO.output(vb, GPIO.LOW)
-		elif char == '+':
-			print('+')
-			#GPIO.output(vb, GPIO.LOW)
+			pwm.start(duty_cycle)
+			time.sleep(.3)
+			pwm.stop()
+		elif char == '`':
+			print('`')
 			time.sleep(1)
 		elif char == '*':
 			print('*')
-			#GPIO.output(vb, GPIO.LOW)
-			time.sleep(2)
+			time.sleep(3)
 
-'''
-def vb_motor_dic(enc_dic):
-	for key in enc_dic:
-		for j in enc_dic[key]:
-			if j == '0':
-				winsound.Beep(2500, 500)
-			elif j == '1':
-				winsound.Beep(2500, 1000)
-			elif j == '+':
-				time.sleep(.5)
-			elif j == '*':
-				time.sleep(.5)
-'''
+def error():
+	err_msg = ['0','0','0','*','1','1','1','*','0','0','0']
+	for char in err_msg:
+		if char == '1':
+			pwm.start(duty_cycle)
+			time.sleep(1)
+			pwm.stop()
+		elif char == '0':
+			pwm.start(duty_cycle)
+			time.sleep(.3)
+			pwm.stop()
+		elif char == '*':
+			time.sleep(1)
 
-i = 3
-if i == 0:
+dip1_high = GPIO.input(dip1)
+if dip1_high == True:
 	while True:
 		dictionary(input_gpio())
-elif i == 1:
+
+dip2_high = GPIO.input(dip2)
+elif dip2_high == True:
 	while True:
 		spanish(input_gpio())
 
-elif i == 2:
+dip3_high = GPIO.input(dip3)
+elif dip3_high == True:
 	while True:
 		text_doc()
 
-elif i == 3:
+dip4_high = GPIO.input(dip4)
+elif dip4_high == True:
 	while True:
-		math_solver()
+		math_solver(input_gpio())
