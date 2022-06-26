@@ -25,5 +25,8 @@ RHeel: Enter
 GERBER!!!! --> 69420.zip!!!!
 
 Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
+Its nothing weird on the front i promise<br>
+
 <b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br>
-If you want to build one, comment through musescore and ill send an extra PCB (or gerber) with an STL for the case. JLC PCB prints alot and I only have one Pi...
+If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
+I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!
