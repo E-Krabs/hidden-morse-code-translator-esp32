@@ -1,8 +1,8 @@
 # morse_code_exam_cheater
 Takes encoded words from RPi and scrapes their result, converts to tts or back to morse with a vibration motor that you can hide... anywhere.
 
-<img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/3d_dark_front.png"></img>
-<img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/3D_dark_back.png"></img>
+<img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/~3D_dark_front.png"></img>
+<img src="https://raw.githubusercontent.com/E-Krabs/morse_code_exam_cheater/main/~3D_dark_back.png"></img>
 
 Translates morse inputs from GPIO, decodes them, and searches either <a href="https://api.dictionaryapi.dev">Dictionaryapi.dev</a>, or <a href="https://spanishdict.com">Spanishdict</a>.
 Also plays line by line in a text file with tts. Tts has been replaced with vibration motor.
