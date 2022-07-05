@@ -46,7 +46,7 @@ LHeel: Space<br>
 Wait 5 seconds of no input will enter morse.
 
 GERBER!!!! --> 69420.zip!!!!
-
+J8 and J6 are not connected, I forgot to.
 Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
 Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br>
 
