@@ -39,17 +39,21 @@ Also plays line by line in a text file with tts. Tts has been replaced with vibr
   <li><a href="https://www.digikey.com/en/products/detail/cui-devices/PJ-083BH/9830155">DC Jack</a></li>
 </ul>
 How I use??
-Connect the RPi to internet. Tape the vobration motor to your theigh through a small hole in your pocket. Place buttons under BOTH big toes, and BOTH heels. <br>
-LToe: 0 (dot)<br>
-RToe: 1 (dash)<br>
-LHeel: Space<br>
+Connect the RPi to internet. Tape the vobration motor to your theigh through a small hole in your pocket. Place buttons under both big toes, and left heels.<br>
+Im tring different buttons that are quiet but flexible to be comfortable to wear.<br>
+<ul>
+  <li>LToe: 0 (dot)<br></li>
+  <li>RToe: 1 (dash)<br></li>
+  <li>LHeel: Space<br></li>
 Wait 5 seconds of no input will enter morse.
+</ul><br>
 
-GERBER!!!! --> 69420.zip!!!!
-J8 and J6 are not connected, I forgot to.
-Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
-Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br>
-
-<b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br>
-If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
-I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!
+NOTES:<br>
+<ol>
+<li>GERBER --> 69420.zip</li>
+<li>J8 and J6 are not connected, I forgot to.<br></li>
+<li>RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br></li>
+<li>Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br></li>
+<li><b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br></li>
+<li>If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
+I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!</li>
