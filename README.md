@@ -46,7 +46,7 @@ Wait 5 seconds of no input will enter morse.
 GERBER!!!! --> 69420.zip!!!!
 
 Note: RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br>
-Its nothing weird on the front i promise<br>
+Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br>
 
 <b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br>
 If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
