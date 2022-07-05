@@ -27,11 +27,13 @@ Also plays line by line in a text file with tts. Tts has been replaced with vibr
   <li><a href="https://www.amazon.com/dp/B07MFKKWG5?psc=1&ref=ppx_yo2ov_dt_b_product_details">Headphone jacks</a></li>
   <li><a href="https://www.amazon.com/dp/B08R1MJWK3?psc=1&ref=ppx_yo2ov_dt_b_product_details">Charge board</a></li>
   <li><a href="https://www.amazon.com/dp/B07C2Z2VSG?psc=1&ref=ppx_yo2ov_dt_b_product_details">12v Batt holder for transmitter</a></li>
+  <li><a href="https://www.amazon.com/gp/product/B079ZY3MQB/ref=ox_sc_saved_title_1?smid=A3LK35U87Q7KHP&psc=1">DC Plug</a></li>
   <li><b>Digikey:</b></li>
   <li>2x 33nf caps</li>
   <li>2x 10uf caps</li>
   <li>2x 220Ohm resistors</li>
   <li>2x 150Ohm resistors</li>
+  <li>button</li>
   <li><a href="https://www.aliexpress.com/item/2251832734091476.html?spm=a2g0o.productlist.0.0.11765d4az0uH2i&algo_pvid=263211c2-3214-4162-9301-3bb8ea627da0&algo_exp_id=263211c2-3214-4162-9301-3bb8ea627da0-26&pdp_ext_f=%7B%22sku_id%22%3A%2266042057184%22%7D&pdp_npi=2%40dis%21USD%21%210.22%21%21%21%21%21%40210318b916570550813852749e847a%2166042057184%21sea">Audio Amp</a></li>
   <li><a href="https://www.digikey.com/en/products/detail/cit-relay-and-switch/KG04ET/12503505">4pos dip switch</a></li>
   <li><a href="https://www.digikey.com/en/products/detail/c-k/OS102011MA1QN1/1981430">Slide switch SPDT</a></li>
