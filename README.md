@@ -56,6 +56,7 @@ NOTES:<br>
   <li>RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br></li>
   <li>Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br></li>
   <li><b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br></li>
+  <li>Beware of polarity on battery from amazon, it may be switched.</li>
   <li>If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
   I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!</li>
 </ol>
