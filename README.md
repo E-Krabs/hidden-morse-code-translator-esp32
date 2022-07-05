@@ -50,10 +50,12 @@ Wait 5 seconds of no input will enter morse.
 
 NOTES:<br>
 <ol>
-<li>GERBER --> 69420.zip</li>
-<li>J8 and J6 are not connected, I forgot to.<br></li>
-<li>RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br></li>
-<li>Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br></li>
-<li><b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br></li>
-<li>If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
-I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!</li>
+  <li>GERBER --> 69420.zip</li>
+  <li>J8 and J6 are not connected, I forgot to.<br></li>
+  <li><b>This board has audio functionality, but was replaced with the vibrator; I was worried you could see the earpiece. You can enable it in <code>main.py</code></b></li>
+  <li>RPi Zero W is overkill. I could use a different microcontoller with circuit python with internet.<br></li>
+  <li>Its nothing weird on the front i promise, you can remove in <code>.kicad_pcb</code><br></li>
+  <li><b>Upcoming: Replace RPi with Teensy or Pico and download entire API to SD as JSON. So no internet needed!</b><br></li>
+  <li>If you want to build one, use JLCPCB, and upload "69420.zip". They're super cheap if you select 10-18 day shipping and have a coupon!<br>
+  I ended up paying $3.98 for five boards... as compared to OSHPARK's $36 for 3!</li>
+</ol>
