@@ -15,6 +15,27 @@ Also plays line by line in a text file with tts. Tts has been replaced with vibr
   <li>Morse --> Vibration Motor</li>
 </ul>
 
+<h1>Parts List!</h1>
+<ul>
+  <li><b>Amazon:</b></li>
+  <li><a href="https://www.amazon.com/dp/B07PHRX7QH?psc=1&ref=ppx_yo2ov_dt_b_product_details">Vibration Motor</a></li>
+  <li><a href="https://www.amazon.com/dp/B08YN5CPBN?psc=1&ref=ppx_yo2ov_dt_b_product_details">Transmitter and Reciever</a></li>
+  <li><a href="https://www.amazon.com/dp/B08YN5CPBN?psc=1&ref=ppx_yo2ov_dt_b_product_details">Transmitter and Reciever</a></li>
+  <li><a href="https://www.amazon.com/dp/B09DPNCLQZ?psc=1&ref=ppx_yo2ov_dt_b_product_details">Battery</a></li>
+  <li><a href="https://www.amazon.com/dp/B09MYRVJ65?psc=1&ref=ppx_yo2ov_dt_b_product_details">20x2 Pin Header</a></li>
+  <li><a href="https://www.amazon.com/dp/B07MFKKWG5?psc=1&ref=ppx_yo2ov_dt_b_product_details">Headphone jacks</a></li>
+  <li><a href="https://www.amazon.com/dp/B08R1MJWK3?psc=1&ref=ppx_yo2ov_dt_b_product_details">Charge board</a></li>
+  <li><a href="https://www.amazon.com/dp/B07C2Z2VSG?psc=1&ref=ppx_yo2ov_dt_b_product_details">12v Batt holder for transmitter</a></li>
+  <li><b>Digikey:</b></li>
+  <li>2x 33nf caps</li>
+  <li>2x 10uf caps</li>
+  <li>2x 220Ohm resistors</li>
+  <li>2x 150Ohm resistors</li>
+  <li><a href="https://www.digikey.com/en/products/detail/cit-relay-and-switch/KG04ET/12503505">4pos dip switch</li></li>
+  <li><a href="https://www.digikey.com/en/products/detail/c-k/OS102011MA1QN1/1981430">Slide switch SPDT</a></li>
+  <li><a href="https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/0906-0-15-20-76-14-11-0/1147048">2x Spring contacts (pogo pins)</a></li>
+  <li><a href="https://www.digikey.com/en/products/detail/cui-devices/PJ-083BH/9830155">DC Jack</a></li>
+</ul>
 How I use??
 Connect the RPi to internet. Tape the vobration motor to your theigh through a small hole in your pocket. Place buttons under BOTH big toes, and BOTH heels. <br>
 LToe: 0 (dot)<br>
