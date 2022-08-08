@@ -1,5 +1,5 @@
 # morse_code_exam_cheater
-Decodes morse code imput from RPi 0 w+ GPIO, sends to an API, and plays back inear tts or vibration motor that you can hide... anywhere.<br>
+Decodes morse code imput from ESP32 IO, sends to an API, and plays back inear tts or vibration motor that you can hide... anywhere.<br>
 
 <center>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
@@ -51,4 +51,5 @@ NOTES:<br>
   <li>Beware of polarity on battery from amazon, it may be switched.</li>
   <li>If you want to build one, use JLCPCB, and upload the three .zips.</li>
   <li>Im very sad cause i already printed the boards with silk screen overlapping, so it looks retarded...</li>
+  <li>Raspberry pi was updated to an ESP32, cause the Raspberry pi zero is not in production rn and is expesive.</li>
 </ol>
