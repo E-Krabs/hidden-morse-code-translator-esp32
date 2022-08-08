@@ -1,6 +1,0 @@
-(fp_lib_table
-  (lib (name rpi0w1)(type KiCad)(uri ${KIPRJMOD}/rpi0w1.pretty)(options "")(descr ""))
-  (lib (name main)(type KiCad)(uri C:/Users/Tyler/Documents/Speed/main.pretty)(options "")(descr ""))
-  (lib (name pi)(type KiCad)(uri ${KIPRJMOD}/pi.pretty)(options "")(descr ""))
-  (lib (name main2)(type KiCad)(uri C:/Users/Tyler/Documents/Speed/main)(options "")(descr ""))
-)

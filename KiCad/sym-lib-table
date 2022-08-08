@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name ksan)(type Legacy)(uri ${KIPRJMOD}/ksan.lib)(options "")(descr "")(disabled))
-)
