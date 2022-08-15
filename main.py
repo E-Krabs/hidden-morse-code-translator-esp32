@@ -1,4 +1,3 @@
-'''
 from machine import Pin, PWM
 from time import sleep
 import re
@@ -9,9 +8,10 @@ import os
 import re
 import requests
 cwd = os.getcwd()
-#zero = Pin(~, Pin.IN)
-#one = Pin(~, Pin.IN)
-#vib = Pin(~, Pin.OUT)
+'''
+zero = Pin(~, Pin.IN)
+one = Pin(~, Pin.IN)
+vib = Pin(~, Pin.OUT)
 
 dip1 = True
 dip2 = False
@@ -21,6 +21,7 @@ dip4 = False
 def morse_input():
 	int_lst = []
 	while True:
+		'''
 		usr_input = input('Enter Code:' )
 		int_lst.append(usr_input)
 		break
@@ -53,7 +54,6 @@ def morse_input():
 				sleep(.1)
 				vib.value(0)
 			break
-		'''
 	return int_lst
 
 def morse_decode(int_lst):
