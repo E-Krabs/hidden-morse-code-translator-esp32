@@ -1,6 +1,6 @@
 # morse_code_exam_cheater
 Decodes morse code imput from ESP32 IO, sends to an API, and plays back inear tts or vibration motor that you can hide... anywhere.<br>
-
+<h3>Do not print pcb yet, receiver's 5v is swapped and blew up my parts...</h3>
 <center>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
 <b>Updated to Lolin32!!<br></b>
