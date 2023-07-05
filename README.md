@@ -1,4 +1,4 @@
-# morse_code_exam_cheater
+# hidden-morse-code-translator-esp32
 
 Translates morse from buttons under toes and vibrates target language's result via Google Translate.<br>
 <h3>Usage</h3>
