@@ -21,7 +21,9 @@ After sending the encoded word in the source language to the API for translation
     <td>
       <img src="https://github.com/E-Krabs/hidden-morse-code-translator-esp32/blob/main/IMG_6871.png?raw=true">
     </td>
-    <td>
+  </tr>
+  <tr>
+        <td>
       <img src="https://github.com/E-Krabs/hidden-morse-code-translator-esp32/blob/main/IMG_6870.png?raw=true">
     </td>
     <td>
